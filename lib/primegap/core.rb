@@ -1,4 +1,4 @@
-require "primegap/core/version"
+require 'primegap/core/version'
 
 module Primegap
   module Core
