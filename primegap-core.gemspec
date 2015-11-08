@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'PrimeGap Business Logic'
   spec.homepage      = 'http://primegap.net'
 
-  spec.files = Dir['{app,config,db,lib}/**/*', 'Rakefile', 'README.md']
+  spec.files = Dir['{app,db,lib}/**/*', 'Rakefile', 'README.md']
   spec.test_files = Dir['spec/**/*']
 
   spec.add_dependency 'rails', '~> 4.2.4'
