@@ -16,7 +16,8 @@ Gem::Specification.new do |spec|
   spec.files = Dir['{app,db,lib}/**/*', 'Rakefile', 'README.md']
   spec.test_files = Dir['spec/**/*']
 
-  spec.add_dependency 'rails', '~> 4.2.4'
+  spec.add_dependency 'activerecord', '~> 4.2.4'
+  spec.add_dependency 'actionmailer', '~> 4.2.4'
 
   spec.add_development_dependency 'sqlite3'
 
