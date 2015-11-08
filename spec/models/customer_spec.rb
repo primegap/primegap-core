@@ -14,11 +14,11 @@ RSpec.describe Customer, type: :model do
   end
 
   describe '#split_full_name' do
-    contex 'with first_name' do
-      let(:subject) { Customer.create(full_name: 'John') }
+    context 'with last_name' do
+      let(:subject) { Customer.create(full_name: 'Doe') }
 
-      it { expect(subject.first_name).to eq 'John' }
-      it { expect(subject.last_name).to be_nil }
+      it { expect(subject.first_name).to be_nil }
+      it { expect(subject.last_name).to eq 'Doe' }
     end
 
     context 'with first_name and last_name' do
