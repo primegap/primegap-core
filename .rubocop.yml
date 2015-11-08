@@ -4,3 +4,7 @@ Style/Documentation:
   Enabled: false
 Metrics/LineLength:
   Enabled: false
+AllCops:
+  Exclude:
+    - db/**/*
+    - spec/dummy/db/**/*
