@@ -12,4 +12,20 @@ RSpec.describe Customer, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:full_name) }
   end
+
+  describe '#split_full_name' do
+    context 'with first_name and last_name' do
+      let(:subject) { Customer.create(full_name: 'John Doe') }
+
+      it { expect(subject.first_name).to eq 'John' }
+      it { expect(subject.last_name).to eq 'Doe' }
+    end
+
+    context 'with first_name, middle_name and last_name' do
+      let(:subject) { Customer.create(full_name: 'John F. Doe') }
+
+      it { expect(subject.first_name).to eq 'John F.' }
+      it { expect(subject.last_name).to eq 'Doe' }
+    end
+  end
 end
