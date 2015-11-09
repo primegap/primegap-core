@@ -16,9 +16,15 @@ Gem::Specification.new do |spec|
   spec.files = Dir['{app,db,lib}/**/*', 'Rakefile', 'README.md']
   spec.test_files = Dir['spec/**/*']
 
+  # Rails dependencies
   spec.add_dependency 'activerecord', '~> 4.2.4'
   spec.add_dependency 'actionmailer', '~> 4.2.4'
 
+  # Other dependecies
+  spec.add_dependency 'bcrypt', '~> 3.1.7'
+  spec.add_dependency 'has_secure_token'
+
+  # Development/Test dependencies
   spec.add_development_dependency 'sqlite3'
 
   spec.add_development_dependency 'bundler', '~> 1.10'
