@@ -12,7 +12,9 @@ RSpec.describe TokenIssuer, type: :model do
     double(:authentication_token, body: 'token')
   end
   let(:request) do
-    double(:request, remote_ip: '100.10.10.23', user_agent: 'Test Browser')
+    double(:request, remote_ip: '100.10.10.23',
+                     user_agent: 'Test Browser',
+                     headers: { 'X-Auth-Token' => 'token' })
   end
 
   describe '.create_and_return_token' do
@@ -32,10 +34,25 @@ RSpec.describe TokenIssuer, type: :model do
     end
   end
 
+  describe '.expire_token' do
+    it 'destroys the token from the resource authentication_tokens' do
+      allow(resource.authentication_tokens).to receive(:detect).and_return(authentication_token)
+      expect(authentication_token).to receive(:destroy)
+      described_class.expire_token(resource, request)
+    end
+  end
+
   describe '.purge_old_tokens' do
     it "deletes all the user's tokens" do
       expect(resource.authentication_tokens).to receive_message_chain(:order, :offset, :destroy_all)
       described_class.purge_old_tokens(resource)
+    end
+  end
+
+  describe '#find_token' do
+    it 'detects a token between the resource authentication_tokens' do
+      expect(resource.authentication_tokens).to receive(:detect).and_return(authentication_token)
+      described_class.build.find_token(resource, 'token')
     end
   end
 end
