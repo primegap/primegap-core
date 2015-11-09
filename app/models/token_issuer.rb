@@ -35,7 +35,7 @@ class TokenIssuer
   end
 
   def find_token(resource, token_from_headers)
-    resource.authentication_tokens.detect do |token|
+    resource.authentication_tokens.find do |token|
       token.body == token_from_headers
     end
   end

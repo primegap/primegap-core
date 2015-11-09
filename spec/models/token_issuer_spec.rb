@@ -36,7 +36,7 @@ RSpec.describe TokenIssuer, type: :model do
 
   describe '.expire_token' do
     it 'destroys the token from the resource authentication_tokens' do
-      allow(resource.authentication_tokens).to receive(:detect).and_return(authentication_token)
+      allow(resource.authentication_tokens).to receive(:find).and_return(authentication_token)
       expect(authentication_token).to receive(:destroy)
       described_class.expire_token(resource, request)
     end
@@ -50,9 +50,10 @@ RSpec.describe TokenIssuer, type: :model do
   end
 
   describe '#find_token' do
-    it 'detects a token between the resource authentication_tokens' do
-      expect(resource.authentication_tokens).to receive(:detect).and_return(authentication_token)
-      described_class.build.find_token(resource, 'token')
+    let(:authentication_tokens) { [authentication_token] }
+
+    it 'finds a token between the resource authentication_tokens' do
+      expect(described_class.build.find_token(resource, 'token')).to eq(authentication_token)
     end
   end
 end
