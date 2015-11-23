@@ -3,6 +3,8 @@ class Customer < ActiveRecord::Base
 
   before_save :split_full_name
 
+  belongs_to :company
+
   private
 
   def split_full_name
