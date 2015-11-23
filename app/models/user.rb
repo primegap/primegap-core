@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :authentication_tokens
-  has_secure_password
-  validates :password, length: { minimum: 8 }
+  include Users::Associations
+  include Users::Validations
 
-  belongs_to :company
+  has_secure_password
 end

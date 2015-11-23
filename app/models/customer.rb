@@ -1,9 +1,8 @@
 class Customer < ActiveRecord::Base
-  validates_presence_of :full_name
+  include Customers::Associations
+  include Customers::Validations
 
   before_save :split_full_name
-
-  belongs_to :company
 
   private
 

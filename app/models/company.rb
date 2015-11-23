@@ -1,4 +1,3 @@
 class Company < ActiveRecord::Base
-  has_many :users
-  has_many :customers
+  include Companies::Associations
 end
