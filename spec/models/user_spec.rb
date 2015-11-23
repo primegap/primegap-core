@@ -11,6 +11,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_index(:company_id) }
   end
 
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:email) }
+  end
+
   describe 'associations' do
     it { is_expected.to belong_to(:company) }
     it { is_expected.to have_many(:authentication_tokens) }
