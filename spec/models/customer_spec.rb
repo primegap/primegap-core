@@ -20,22 +20,24 @@ RSpec.describe Customer, type: :model do
   end
 
   describe '#split_full_name' do
+    let(:company) { Company.create(name: 'Joy Inc.') }
+
     context 'with last_name' do
-      let(:subject) { Customer.create(full_name: 'Doe') }
+      let(:subject) { Customer.create(full_name: 'Doe', company_id: company.id) }
 
       it { expect(subject.first_name).to be_nil }
       it { expect(subject.last_name).to eq 'Doe' }
     end
 
     context 'with first_name and last_name' do
-      let(:subject) { Customer.create(full_name: 'John Doe') }
+      let(:subject) { Customer.create(full_name: 'John Doe', company_id: company.id) }
 
       it { expect(subject.first_name).to eq 'John' }
       it { expect(subject.last_name).to eq 'Doe' }
     end
 
     context 'with first_name, middle_name and last_name' do
-      let(:subject) { Customer.create(full_name: 'John F. Doe') }
+      let(:subject) { Customer.create(full_name: 'John F. Doe', company_id: company.id) }
 
       it { expect(subject.first_name).to eq 'John F.' }
       it { expect(subject.last_name).to eq 'Doe' }
