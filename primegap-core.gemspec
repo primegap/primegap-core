@@ -17,9 +17,9 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir['spec/**/*']
 
   # Rails dependencies
-  spec.add_dependency 'railties', '>= 5.0.0.beta1.1'
-  spec.add_dependency 'activerecord', '>= 5.0.0.beta1.1'
-  spec.add_dependency 'actionmailer', '>= 5.0.0.beta1.1'
+  spec.add_dependency 'railties', '5.0.0.beta1.1'
+  spec.add_dependency 'activerecord', '5.0.0.beta1.1'
+  spec.add_dependency 'actionmailer', '5.0.0.beta1.1'
 
   # Other dependecies
   spec.add_dependency 'bcrypt', '~> 3.1.7'
