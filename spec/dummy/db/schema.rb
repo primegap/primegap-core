@@ -21,9 +21,8 @@ ActiveRecord::Schema.define(version: 20151123080837) do
     t.string   "user_agent"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_authentication_tokens_on_user_id"
   end
-
-  add_index "authentication_tokens", ["user_id"], name: "index_authentication_tokens_on_user_id"
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -40,9 +39,8 @@ ActiveRecord::Schema.define(version: 20151123080837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "company_id"
+    t.index ["company_id"], name: "index_customers_on_company_id"
   end
-
-  add_index "customers", ["company_id"], name: "index_customers_on_company_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -50,9 +48,8 @@ ActiveRecord::Schema.define(version: 20151123080837) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["email"], name: "index_users_on_email"
   end
-
-  add_index "users", ["company_id"], name: "index_users_on_company_id"
-  add_index "users", ["email"], name: "index_users_on_email"
 
 end
